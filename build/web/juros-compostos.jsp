@@ -13,19 +13,29 @@
     </head>
     <body>
         <h1><%@ include file="WEB-INF/jspf/menu.jspf" %></h1>
-        <div style="text-align: center;">
-        <h1>Juros Compostos</h1>
-        <form action="calculo-composto.jsp">
-            <label for="valor">Valor:</label>
-            <input type="number" id="valor" name="valor" required>
-            <br>
-            <label for="taxa">Taxa de juros:</label>
-            <input type="number" id="taxa" name="taxa" required>
-            <br>
-            <label for="periodo">Período em meses:</label>
-            <input type="number" id="meses" name="meses" required>
-            <br>
-            <button type="submit">Calcular</button>
+        <div style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+             padding: 10px; border: 2px;
+             margin-left: 850px;
+             margin-right: 850px;
+             background-color: rgb(239, 239, 239);
+             border-radius: 10px;">
+            <h2>Juros Compostos</h2>
+            <form action="calculo-composto.jsp">
+                <label for="valor">Valor:</label>
+                <br>
+                <input type="number" id="valor" name="valor" required>
+                <br><br>
+                <label for="taxa">Taxa de juros:</label>
+                <br>
+                <input type="number" id="taxa" name="taxa" required>
+                <br><br>
+                <label for="periodo">Período em meses:</label>
+                <br>
+                <input type="number" id="meses" name="meses" required>
+                <br>
+                <div style="padding: 20px;">
+                <button type="submit">Calcular</button>
+                </div>
         </div>
-        </body>
+    </body>
 </html>

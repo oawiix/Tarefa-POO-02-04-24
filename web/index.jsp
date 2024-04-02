@@ -12,9 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <br>
         <h1><%@ include file="WEB-INF/jspf/menu.jspf" %></h1>
-        <div style="text-align: center;">
+        <div style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 50px;">
         <h1>Felipe de Freitas Fernandes</h1>
         <div>
     </body>

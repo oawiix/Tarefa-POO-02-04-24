@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <div style="text-align: center;">
+        <div style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
         <h1><%@ include file="WEB-INF/jspf/menu.jspf" %></h1>
         <h1>Resultado do caluclo de Juros Compostos<br></h1>
         <% 
