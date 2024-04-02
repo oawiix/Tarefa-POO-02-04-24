@@ -15,14 +15,17 @@
         <div style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
         <h1><%@ include file="WEB-INF/jspf/menu.jspf" %></h1>
         <h1>Resultado do caluclo de Juros Simples<br></h1>
-        <% 
+        <% try {
             double valor = Double.parseDouble(request.getParameter("valor"));
             double taxa = Double.parseDouble(request.getParameter("taxa"));
             int meses = Integer.parseInt(request.getParameter("meses"));
             double juros = valor/100 * taxa * meses;
-            double montante = valor + juros;
+            double montante = valor + juros; %>
+            <h1>Resultado: <%= montante %></h1>
+        <% } catch (Exception e) {
+            out.println("Erro: " + e.getMessage());
+        }
         %>
-        <h1>Resultado: <%= montante %></h1>
         </div> 
     </body>
 </html>
