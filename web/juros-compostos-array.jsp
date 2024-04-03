@@ -27,7 +27,7 @@
                 <br><br>
                 <label for="taxa">Taxa de juros:</label>
                 <br>
-                <input type="number" id="taxa" name="taxa" required>
+                <input type="number" step="0.01" id="taxa" name="taxa" required>
                 <br><br>
                 <label for="periodo">Período em meses:</label>
                 <br>
