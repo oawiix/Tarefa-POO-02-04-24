@@ -24,11 +24,11 @@
                         for (int i = 0; i < meses; i++) {
                             double juros = valor / 100 * taxa;
                             valor += juros;%>
-            <table style="
+            <table style="border: 1px solid black;
                    margin-left: 600px;
                    margin-right: 600px;">
-                <th>Mês <%= i + 1%>&nbsp&nbsp&nbsp</th>
-                <td>Juros no mês: <%= df.format(juros) %>&nbsp&nbsp&nbsp</td>
+                <th>Mês <%= i + 1%>         &nbsp&nbsp&nbsp</th>
+                <td>Juros no mês: <%= df.format(juros) %>           &nbsp&nbsp&nbsp</td>
                 <th>Montante no mês: <%= df.format(valor) %></th>
             </table>
             <%

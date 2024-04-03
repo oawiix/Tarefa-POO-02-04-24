@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.text.DecimalFormat" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,9 +20,10 @@
             double valor = Double.parseDouble(request.getParameter("valor"));
             double taxa = Double.parseDouble(request.getParameter("taxa"));
             int meses = Integer.parseInt(request.getParameter("meses"));
+            DecimalFormat df = new DecimalFormat("#.##"); // Limitar qtd decimal
             double juros = valor/100 * taxa * meses;
             double montante = valor + juros; %>
-            <h1>Resultado: <%= montante %></h1>
+            <h1><%= df.format(montante) %></h1>
         <% } catch (Exception e) {
             out.println("Erro: " + e.getMessage());
         }
