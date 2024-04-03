@@ -40,16 +40,16 @@
                 <th>Juros       &nbsp&nbsp</td>
                 <th>Montante</td>
                 <tr>
-                    <td><%= i + 1%></td>
-                    <td><%= df.format(JArray[i])%> </td>
-                    <td><%= df.format(MValor[i])%></td>
+                    <td><%= i + 1 %></td>
+                    <td><%= df.format(JArray[i]) %> </td>
+                    <td><%= df.format(MValor[i]) %></td>
                 </tr>
             </table>
             <%
                 if (i == meses - 1) {
             %>
 
-            <h1>Montante total com array: <%= df.format(valor)%></h1>
+            <h1>Montante total com array: <%= df.format(valor) %></h1>
 
             <%
                 }
