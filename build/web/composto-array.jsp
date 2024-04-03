@@ -11,31 +11,51 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+
     </head>
     <body>
         <div style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
             <h1><%@ include file="WEB-INF/jspf/menu.jspf" %></h1>
-            <h1>Resultado do caluclo de Juros Compostos<br></h1>
-                <% try {
+            <h1>Resultado do cálculo de Juros Compostos<br></h1>
+                <%
+                    try {
                         double valor = Double.parseDouble(request.getParameter("valor"));
                         double taxa = Double.parseDouble(request.getParameter("taxa"));
                         int meses = Integer.parseInt(request.getParameter("meses"));
+                        double JArray[] = new double[meses];
+                        double MValor[] = new double[meses];
                         DecimalFormat df = new DecimalFormat("#.##"); // Limitar qtd decimal
                         for (int i = 0; i < meses; i++) {
                             double juros = valor / 100 * taxa;
-                            valor += juros;%>
-            <table style="
-                   margin-left: 600px;
-                   margin-right: 600px;">
-                <th>Mês <%= i + 1%>&nbsp&nbsp&nbsp</th>
-                <td>Juros no mês: <%= df.format(juros) %>&nbsp&nbsp&nbsp</td>
-                <th>Montante no mês: <%= df.format(valor) %></th>
+                            JArray[i] = juros;
+                            MValor[i] = valor + juros;
+                            valor += juros;
+                        }
+                %>      
+                <% for (int i = 0; i < meses; i++) {%>
+            <table style="border: 1px solid black;
+                   margin-left: 900px;
+                   margin-right: 900px;">
+                <th>Mês     &nbsp&nbsp</td>
+                <th>Juros       &nbsp&nbsp</td>
+                <th>Montante</td>
+                <tr>
+                    <td><%= i + 1%></td>
+                    <td><%= df.format(JArray[i])%> </td>
+                    <td><%= df.format(MValor[i])%></td>
+                </tr>
             </table>
             <%
-                    if (i == meses - 1) {%>
-            <h1>Montante total: <%= df.format(valor)%></h1>
-            <% } %>
-            <% }
+                if (i == meses - 1) {
+            %>
+
+            <h1>Montante total com array: <%= df.format(valor)%></h1>
+
+            <%
+                }
+            %>
+            <%
+                    }
                 } catch (Exception e) {
                     out.println("Erro: " + e.getMessage());
                 }

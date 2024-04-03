@@ -6,6 +6,7 @@
         <a href="index.jsp">INICIO</a>
         <a href="juros-simples.jsp">Juros Simples</a>
         <a href="juros-compostos.jsp">Juros Compostos</a>
+        <a href="juros-compostos-array.jsp">Juros Compostos[Array]</a>
     </div>
         
 
