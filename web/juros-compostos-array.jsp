@@ -19,7 +19,7 @@
              margin-right: 850px;
              background-color: rgb(239, 239, 239);
              border-radius: 10px;">
-            <h2>Juros Compostos</h2>
+            <h2>Juros Compostos [Array]</h2>
             <form action="composto-array.jsp">
                 <label for="valor">Valor:</label>
                 <br>

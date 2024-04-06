@@ -21,21 +21,31 @@
                         double taxa = Double.parseDouble(request.getParameter("taxa"));
                         int meses = Integer.parseInt(request.getParameter("meses"));
                         DecimalFormat df = new DecimalFormat("#.##"); // Limitar qtd decimal
-                        for (int i = 0; i < meses; i++) {
-                            double juros = valor / 100 * taxa;
-                            valor += juros;%>
+                %>
             <table style="border: 1px solid black;
-                   margin-left: 600px;
-                   margin-right: 600px;">
-                <th>Mês <%= i + 1%>         &nbsp&nbsp&nbsp</th>
-                <td>Juros no mês: <%= df.format(juros) %>           &nbsp&nbsp&nbsp</td>
-                <th>Montante no mês: <%= df.format(valor) %></th>
+                   margin-left: 900px;
+                   margin-right: 900px;">
+                <tr>
+                    <th>Mês &nbsp</th>
+                    <th>Juros &nbsp</th>
+                    <th>Montante &nbsp</th>
+                </tr>
+                <%
+                    for (int i = 0; i < meses; i++) {
+                        double juros = valor / 100 * taxa;
+                        valor += juros;%>
+                <tr>
+                    <td><%= i + 1%></td>
+                    <td><%= df.format(juros)%></td>
+                    <td><%= df.format(valor)%></td>
+                </tr>
+                <%
+                    if (i == meses - 1) {%>
+                <h1>Montante total: <%= df.format(valor)%></h1>
+                <% } %>
+                <% } %>
             </table>
             <%
-                    if (i == meses - 1) {%>
-            <h1>Montante total: <%= df.format(valor)%></h1>
-            <% } %>
-            <% }
                 } catch (Exception e) {
                     out.println("Erro: " + e.getMessage());
                 }

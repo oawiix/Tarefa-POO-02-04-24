@@ -17,7 +17,7 @@
         <div style="text-align: center; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
             <h1><%@ include file="WEB-INF/jspf/menu.jspf" %></h1>
             <h1>Resultado do cálculo de Juros Compostos<br></h1>
-                <%
+                <%  int v = 0;
                     try {
                         double valor = Double.parseDouble(request.getParameter("valor"));
                         double taxa = Double.parseDouble(request.getParameter("taxa"));
@@ -25,38 +25,40 @@
                         double JArray[] = new double[meses];
                         double MValor[] = new double[meses];
                         DecimalFormat df = new DecimalFormat("#.##"); // Limitar qtd decimal
-                        for (int i = 0; i < meses; i++) {
-                            double juros = valor / 100 * taxa;
-                            JArray[i] = juros;
-                            MValor[i] = valor + juros;
-                            valor += juros;
-                        }
-                %>      
-                <% for (int i = 0; i < meses; i++) {%>
+                %>
             <table style="border: 1px solid black;
                    margin-left: 900px;
                    margin-right: 900px;">
-                <th>Mês     &nbsp&nbsp</td>
-                <th>Juros       &nbsp&nbsp</td>
-                <th>Montante</td>
                 <tr>
-                    <td><%= i + 1 %></td>
-                    <td><%= df.format(JArray[i]) %> </td>
-                    <td><%= df.format(MValor[i]) %></td>
+                    <th>Mês     &nbsp&nbsp</td>
+                    <th>Juros       &nbsp&nbsp</td>
+                    <th>Montante</td>
                 </tr>
-            </table>
-            <%
-                if (i == meses - 1) {
-            %>
 
-            <h1>Montante total com array: <%= df.format(valor) %></h1>
-
-            <%
-                }
-            %>
-            <%
+                <%
+                    for (int i = 0; i < meses; i++) {
+                        double juros = valor / 100 * taxa;
+                        JArray[i] = juros;
+                        MValor[i] = valor + juros;
+                        valor += juros;
+                        v++;
                     }
-                } catch (Exception e) {
+                %>      
+                <% for (int i = 0; i < meses; i++) {%> 
+                <tr>
+                    <td><%= i + 1%></td>
+                    <td><%= df.format(JArray[i])%> </td>
+                    <td><%= df.format(MValor[i])%></td>
+                </tr>
+
+                <% } %>
+            </table>
+            <% if (v == meses) {
+            %>
+
+            <h1>Montante total com array: <%= df.format(valor)%></h1>
+            <% } %>
+            <% } catch (Exception e) {
                     out.println("Erro: " + e.getMessage());
                 }
             %>
